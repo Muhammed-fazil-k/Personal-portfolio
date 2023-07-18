@@ -23,22 +23,20 @@ const SmoothScrollLink = ({ to, children }) => {
 const NavBar = () => {
   return (
     <nav className={styles["navbar-container"]}>
-      <div className={styles["logo"]}>
-        <Link href="#">Fazil</Link>
-      </div>
-      <div className={styles["nav-links"]}>
         <ul>
           <li>
-            <SmoothScrollLink to="introduction">About me</SmoothScrollLink>
+            <SmoothScrollLink to="#">Home</SmoothScrollLink>
           </li>
           <li>
-            <SmoothScrollLink to="skills">Skills</SmoothScrollLink>
+            <SmoothScrollLink to="techstacks">Techstacks</SmoothScrollLink>
           </li>
           <li>
-            <SmoothScrollLink to="contact">Contact</SmoothScrollLink>
+            <SmoothScrollLink to="works">Works</SmoothScrollLink>
+          </li>
+          <li>
+            <SmoothScrollLink to="connect">Connect</SmoothScrollLink>
           </li>
         </ul>
-      </div>
     </nav>
   );
 };
