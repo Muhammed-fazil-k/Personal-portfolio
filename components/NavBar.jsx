@@ -30,9 +30,9 @@ const NavBar = () => {
           <li>
             <SmoothScrollLink to="techstacks">Techstacks</SmoothScrollLink>
           </li>
-          <li>
+          {/* <li>
             <SmoothScrollLink to="works">Works</SmoothScrollLink>
-          </li>
+          </li> */}
           <li>
             <SmoothScrollLink to="connect">Connect</SmoothScrollLink>
           </li>

@@ -1,12 +1,9 @@
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../styles/Introduction.module.css";
+import UserProfileContext from "@/context/UserContext";
 const Introduction = () => {
-  let detail = `Hello, I'm Muhammed Fazil K, a passionate web developer. Feel free to
-  explore my portfolio to see some of my previous projects. If you have
-  a project in mind or would like to discuss potential collaborations,
-  don't hesitate to get in touch. Let's work together to bring your
-  ideas to life and create impactful web experiences` 
+  const {introduction} = useContext(UserProfileContext)
   return (
     <div className={styles["introduction-container"]}>
       <div className={styles["image-container"]}>
@@ -19,7 +16,7 @@ const Introduction = () => {
       </div>
       <div className={styles["detail-container"]}>
         <p>
-          {detail}
+          {introduction}
         </p>
       </div>
     </div>
