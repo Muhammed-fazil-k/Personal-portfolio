@@ -16,7 +16,7 @@
   box-shadow: 1px 0.5px 7px whitesmoke;
 }
 
-.blog-container span {
+.blog-container > span {
   font-size: 0.8rem;
   font-weight: lighter;
 }
