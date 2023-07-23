@@ -1,23 +1,24 @@
 {
-    "user":"fazil",
-    "blogs":[
-        {
-            "id":1,
-            "title":"THis is my first blog",
-            "content":"THis is a blog bro skdishnd  isvn n  a zsn s vn nv sn vn     nfjsnjn vn dsnv dn dnv nkjvn",
-            "date":"23/07/2023"
-        },
-        {
-            "id":2,
-            "title":"THis is my second blog",
-            "content":"THis is a blog bro skdishnd  isvn n  a zsn s vn nv sn vn     nfjsnjn vn dsnv dn dnv nkjvn",
-            "date":"24/07/2023"
-        },
-        {
-            "id":3,
-            "title":"This is my third blog",
-            "content":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-            "date":"24/07/2023"
-        }
-    ]
+  "user": "fazil",
+  "blogs": [
+    {
+      "id": 1,
+      "title": "This is my first blog",
+      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+      "date": "24/07/2023"
+    },
+    {
+      "id": 2,
+      "title": "This is my second blog",
+      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+      "date": "24/07/2023"
+    },
+
+    {
+      "id": 3,
+      "title": "This is my third blog",
+      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+      "date": "24/07/2023"
+    }
+  ]
 }
