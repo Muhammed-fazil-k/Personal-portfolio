@@ -5,25 +5,21 @@ import TechStacks from "@/components/TechStacks";
 import {getLocalData} from '../lib/local-data';
 import UserProfileContext from "@/context/UserContext";
 import Connect from "@/components/Connect";
+import Layout from "@/components/Layout";
 
 export default function Home({data}) {
   return (
     <UserProfileContext.Provider value={data}>
+      <Layout page="home">
       <div className={styles["main-container"]}>
-        <NavBar />
         <div className={styles["section"]} id="#">
           <Introduction />
         </div>
         <div className={styles["section"]} id="techstacks">
           <TechStacks />
         </div>
-        {/* <div className={styles["section"]} id="works">
-          Works
-        </div> */}
-        <div className={styles["section"]} id="connect">
-          <Connect/>
-        </div>
       </div>
+      </Layout>
     </UserProfileContext.Provider>
   );
 }
@@ -32,7 +28,7 @@ export async function getStaticProps(){
   //const res = await fetch('http://localhost:3000/api/staticdata');
   // const content =await res.json();
   // console.log(typeof content);
-  const data = await getLocalData();
+  const data = await getLocalData('personal.json');
   return {
     props:{
       data

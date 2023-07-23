@@ -7,7 +7,7 @@ function Connect() {
     filter: "grayscale(100%)",
   };
   return (
-    <div className={styles["connect-container"]}>
+    <div className={styles["connect-container"]} id="connect">
         <h4>
 
       Lets Connect ♥️

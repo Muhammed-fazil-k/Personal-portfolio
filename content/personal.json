@@ -6,13 +6,19 @@
         {
             "id":1,
             "name":"React",
-            "description":"blah blah blah",
+            "description":"I have started my web development journey with react and it was a good journey till this point",
             "knoweldge":"8/10"
         },
         {
             "id":2,
+            "name":"Next",
+            "description":"Once i learned react , i felt something was missing there . Too much client side . At that point i took Next step",
+            "knoweldge":"8/10"
+        },
+        {
+            "id":3,
             "name":"Java",
-            "description":"blah blah blah",
+            "description":"Felt like a master of programming . So i tried to master it",
             "knoweldge":"4/10"
         }
     ]
