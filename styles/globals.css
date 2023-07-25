@@ -22,6 +22,7 @@ body {
 
 a{
   text-decoration: none;
+  color: rgb(159, 158, 158);
 }
 a:hover{
   text-decoration: underline;
