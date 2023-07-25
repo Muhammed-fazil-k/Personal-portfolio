@@ -1,8 +1,9 @@
 import { getLocalData } from "@/lib/local-data";
-import styles from "../styles/Blogs.module.css";
+import styles from "../../styles/Blogs.module.css";
 import NavBar from "@/components/NavBar";
 import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 //content toggle feature logic 
 // if our content is greater than a particular value 
@@ -16,20 +17,16 @@ const Blog = ({ blog }) => {
   const contentToDisplay = showFullContent
     ? blog.content
     : blog.content.substr(0, maxContentLength);
-
-  function handleToggleContent() {
-    setShowFullContent(!showFullContent);
-  }
   return (
     <div className={styles["blog-container"]}>
       <h2>{blog.title}</h2>
       <span>{blog.date}</span>
       <p>
         {contentToDisplay}
-        {blog.content.length > maxContentLength && (
-          <a onClick={handleToggleContent}>
-            {showFullContent ? "...less" : "...more"}
-          </a>
+        {(
+          <Link href={`/blogs/${blog.id}`}>
+            ...read more
+          </Link>
         )}
       </p>
     </div>
