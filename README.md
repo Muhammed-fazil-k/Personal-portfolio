@@ -8,4 +8,6 @@
 > Right Submenu
 >> Bg color - #000 \
 >> Text - white
-This is blog branch 
+
+This is blah blog branch 
+This is a blog 2
