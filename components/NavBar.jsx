@@ -20,6 +20,7 @@ const SmoothScrollLink = ({ to, children }) => {
 ***REMOVED***
 
 const NavBar = ({ page }) => {
+  console.log("Navbar : render");
   var isHomePage = page === "home";
   var isBlogsPage = page === "blogs";
   return (

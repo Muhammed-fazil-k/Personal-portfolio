@@ -1,13 +1,12 @@
 import styles from "@/styles/Main.module.css";
-import NavBar from "@/components/NavBar";
 import Introduction from "@/components/Introduction";
 import TechStacks from "@/components/TechStacks";
 import {getLocalData} from '../lib/local-data';
 import UserProfileContext from "@/context/UserContext";
-import Connect from "@/components/Connect";
 import Layout from "@/components/Layout";
 
 export default function Home({data}) {
+  console.log("Main page : renders");
   return (
     <UserProfileContext.Provider value={data}>
       <Layout page="home">
@@ -28,6 +27,7 @@ export async function getStaticProps(){
   //const res = await fetch('http://localhost:3000/api/staticdata');
   // const content =await res.json();
   // console.log(typeof content);
+  console.log("Main page : getStaticProps called");
   const data = await getLocalData('personal.json');
   return {
     props:{

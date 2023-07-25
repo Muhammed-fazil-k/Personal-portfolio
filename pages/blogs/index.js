@@ -12,6 +12,7 @@ import Link from "next/link";
 // get the content to display based on the above state variable
 
 const Blog = ({ blog }) => {
+  console.log("Blogs page content: render");
   const [showFullContent, setShowFullContent] = useState(false);
   const maxContentLength = 100;
   const contentToDisplay = showFullContent
@@ -34,6 +35,7 @@ const Blog = ({ blog }) => {
 ***REMOVED***
 
 const BlogsPage = ({ blogs }) => {
+  console.log("Blogs page : render");
   return (
     <Layout page="blogs">
       <div className={styles["blogs-container"]}>
@@ -51,6 +53,7 @@ const BlogsPage = ({ blogs }) => {
 ***REMOVED***
 
 export async function getStaticProps() {
+  console.log("Blogs page : getStaticProps called");
   const { blogs } = await getLocalData("blogs.json");
   return {
     props: {
