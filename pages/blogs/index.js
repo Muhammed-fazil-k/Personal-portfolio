@@ -5,8 +5,49 @@ import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-//content toggle feature logic 
-// if our content is greater than a particular value 
+const BlogsPage = ({ blogs }) => {
+  console.log("Blogs page : render");
+  return (
+    <Layout page="blogs">
+      <div className={styles["blogs-container"]}>
+        <h1>Blogs</h1>
+        <button>
+          <Link href="/blogs/create">New Post</Link>
+        </button>
+        {blogs.map((blog) => {
+          return (
+            <Blog key={blog.id} blog={blog}>
+              {blog.title}
+            </Blog>
+          );
+        })}
+      </div>
+    </Layout>
+  );
+***REMOVED***
+
+export async function getServerSideProps(){
+  const { blogs } = await getLocalData("blogs.json");
+  return {
+    props:{
+      blogs
+    }
+  }
+}
+
+// export async function getStaticProps() {
+//   console.log("Blogs page : getStaticProps called");
+//   const { blogs } = await getLocalData("blogs.json");
+//   return {
+//     props: {
+//       blogs,
+//     },
+//   ***REMOVED***
+// }
+
+
+//content toggle feature logic
+// if our content is greater than a particular value
 // then only show links to toggle content.
 // keep a state variable to store state of content
 // get the content to display based on the above state variable
@@ -24,42 +65,10 @@ const Blog = ({ blog }) => {
       <span>{blog.date}</span>
       <p>
         {contentToDisplay}
-        {(
-          <Link href={`/blogs/${blog.id}`}>
-            ...read more
-          </Link>
-        )}
+        {<Link href={`/blogs/${blog.id}`}>...read more</Link>}
       </p>
     </div>
   );
 ***REMOVED***
-
-const BlogsPage = ({ blogs }) => {
-  console.log("Blogs page : render");
-  return (
-    <Layout page="blogs">
-      <div className={styles["blogs-container"]}>
-        <h1>Blogs</h1>
-        {blogs.map((blog) => {
-          return (
-            <Blog key={blog.id} blog={blog}>
-              {blog.title}
-            </Blog>
-          );
-        })}
-      </div>
-    </Layout>
-  );
-***REMOVED***
-
-export async function getStaticProps() {
-  console.log("Blogs page : getStaticProps called");
-  const { blogs } = await getLocalData("blogs.json");
-  return {
-    props: {
-      blogs,
-    },
-  ***REMOVED***
-}
 
 export default BlogsPage;
