@@ -3,7 +3,6 @@ import { LinkedinIcon, TwitterIcon,InstagramIcon } from "next-share";
 import Link from "next/link";
 import styles from '../styles/Connect.module.css'
 function Connect() {
-  console.log('Connect : renders');
   return (
     <div className={styles["connect-container"]} id="connect">
         <h4>

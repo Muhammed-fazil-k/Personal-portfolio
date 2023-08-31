@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../styles/NavBar.module.css";
 import { Link as ScrollLink } from "react-scroll";
+import AuthContext from "@/context/AuthContext";
 //INtroduction
 //skills
 //Contacts
@@ -20,9 +21,9 @@ const SmoothScrollLink = ({ to, children }) => {
 ***REMOVED***
 
 const NavBar = ({ page }) => {
-  console.log("Navbar : render");
   var isHomePage = page === "home";
-  var isBlogsPage = page === "blogs";
+  const { user,logout } = useContext(AuthContext);
+  console.log("NavBar user: ", user);
   return (
     <nav className={styles["navbar-container"]}>
       <ul>
@@ -47,6 +48,19 @@ const NavBar = ({ page }) => {
         <li>
           <SmoothScrollLink to="connect">Connect</SmoothScrollLink>
         </li>
+        {!user ? (
+          <li>
+            <Link href="/auth/login" className={styles["nav-link"]}>
+              Login
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <a onClick={logout} className={styles["nav-link"]}>
+              Logout
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

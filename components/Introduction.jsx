@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import styles from "../styles/Introduction.module.css";
 import UserProfileContext from "@/context/UserContext";
 const Introduction = () => {
-  console.log("Introduction : render");
   const {introduction} = useContext(UserProfileContext)
   return (
     <div className={styles["introduction-container"]}>

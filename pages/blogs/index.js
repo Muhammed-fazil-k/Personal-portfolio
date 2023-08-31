@@ -1,19 +1,24 @@
 import { getLocalData } from "@/lib/local-data";
 import styles from "../../styles/Blogs.module.css";
-import NavBar from "@/components/NavBar";
 import Layout from "@/components/Layout";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
+import AuthContext from "@/context/AuthContext";
+import Button from "@/components/Button";
 
 const BlogsPage = ({ blogs }) => {
-  console.log("Blogs page : render");
+  const { user, error } = useContext(AuthContext);
+  console.log("User data from BlogsPage: ", user);
+  console.log("Error data from BlogsPage: ", error);
   return (
     <Layout page="blogs">
       <div className={styles["blogs-container"]}>
         <h1>Blogs</h1>
-        <button>
-          <Link href="/blogs/create">New Post</Link>
-        </button>
+        {user && (
+          <Button>
+            <Link href="/blogs/create">New Post</Link>
+          </Button>
+        )}
         {blogs.map((blog) => {
           return (
             <Blog key={blog.id} blog={blog}>
@@ -26,13 +31,13 @@ const BlogsPage = ({ blogs }) => {
   );
 ***REMOVED***
 
-export async function getServerSideProps(){
+export async function getServerSideProps() {
   const { blogs } = await getLocalData("blogs.json");
   return {
-    props:{
-      blogs
-    }
-  }
+    props: {
+      blogs,
+    },
+  ***REMOVED***
 }
 
 // export async function getStaticProps() {
@@ -45,7 +50,6 @@ export async function getServerSideProps(){
 //   ***REMOVED***
 // }
 
-
 //content toggle feature logic
 // if our content is greater than a particular value
 // then only show links to toggle content.
@@ -53,20 +57,24 @@ export async function getServerSideProps(){
 // get the content to display based on the above state variable
 
 const Blog = ({ blog }) => {
-  console.log("Blogs page content: render");
   const [showFullContent, setShowFullContent] = useState(false);
   const maxContentLength = 100;
   const contentToDisplay = showFullContent
     ? blog.content
     : blog.content.substr(0, maxContentLength);
+  const shortContent = blog.content.length < maxContentLength;
   return (
     <div className={styles["blog-container"]}>
-      <h2>{blog.title}</h2>
-      <span>{blog.date}</span>
-      <p>
-        {contentToDisplay}
-        {<Link href={`/blogs/${blog.id}`}>...read more</Link>}
-      </p>
+      <Link href={`/blogs/${blog.id}`}>
+        <h2>{blog.title}</h2>
+        <span>{blog.date}</span>
+        <p>
+          {contentToDisplay}
+          {!shortContent && (
+            <Link href={`/blogs/${blog.id}`}>...read more</Link>
+          )}
+        </p>
+      </Link>
     </div>
   );
 ***REMOVED***

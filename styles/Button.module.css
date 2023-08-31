@@ -1,0 +1,20 @@
+.button{
+  width: 7rem;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1); /* Translucent white background */
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s, box-shadow 0.3s;
+  border: 1px solid white;
+}
+
+/* Hover effect */
+.button:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+}

@@ -1,6 +1,10 @@
+import WithAuth from "@/components/higher_order/WithAuth";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-
+import styles from "../../styles/CreateBlog.module.css";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+import inputStyles from '../../styles/Input.module.css'
 const CreatePage = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -10,13 +14,14 @@ const CreatePage = () => {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
+    console.log(formData);
     const reqParams = {
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(formData),
-    }
+      body: JSON.stringify(formData),
+    ***REMOVED***
     try {
       const res = await fetch("http://localhost:3000/api/add-blog", reqParams);
       if (!res.ok) {
@@ -31,32 +36,44 @@ const CreatePage = () => {
       title: "",
       content: "",
     });
-    router.push('/blogs');
+    router.push("/blogs");
   }
   function handleInputChange(e) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
   return (
-    <div>
-      <p>Creating new Page</p>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="title"
-          onChange={handleInputChange}
-          name="title"
-        />
-        <input
-          type="text"
-          placeholder="content"
-          onChange={handleInputChange}
-          name="content"
-        />
-        <button type="submit">Submit</button>
+    <div className={styles["create-container"]}>
+      <div className={styles["create-title"]}>
+        <h2>Create new blog</h2>
+      </div>
+      <form className={styles["create-form"]} onSubmit={handleFormSubmit}>
+        <div className={styles["create-input"]}>
+          <label>Title</label>
+          <Input
+            type="text"
+            placeholder="title"
+            onChange={handleInputChange}
+            name="title"
+          />
+        </div>
+
+        <div className={styles["create-input"]}>
+          <label>Content</label>
+          <textarea
+            placeholder="content"
+            onChange={handleInputChange}
+            name="content"
+            className={inputStyles["input"]}
+            style={{width:'25rem',height:'20rem'}}
+          />
+        </div>
+        <div className={styles["create-button"]}>
+          <Button type="submit">Submit</Button>
+        </div>
       </form>
     </div>
   );
 ***REMOVED***
 
-export default CreatePage;
+export default WithAuth(CreatePage);
