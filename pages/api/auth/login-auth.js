@@ -22,8 +22,8 @@ export default async function handler(req, res) {
         res.status(400).json({message:'Error in login: '+userData.status})
     }
   } catch (e) {
-    console.error("Error in login-Auth api route",e.response.data);
-    res.status(400).json({message:'Error in login route backend: '+e.response.data.error.message})
+    console.error("Error in connecting to backend ",e);
+    res.status(400).json({message:'Error in login route backend: '})
   }
   //check if it is valid
   // await

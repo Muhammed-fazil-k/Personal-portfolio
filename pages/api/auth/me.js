@@ -21,7 +21,7 @@ export default async function handler(req, res) {
           res.status(401).json({ message: "User not validated - 1" });
         }
       } catch (e) {
-        console.error("Error in fetching user data", e.response.data.error.message);
+        console.error("Error in fetching user data : check backend", e);
         res.status(500).json({ message: "Error fetching user data" });
       }
     } else {

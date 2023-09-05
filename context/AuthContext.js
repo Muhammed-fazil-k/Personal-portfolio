@@ -9,6 +9,8 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
+  const [loginError,setLoginError] = useState('');
+  const [isLoginLoading,setIsLoginLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   //login
   const login = async (credentials) => {
+    setIsLoginLoading(true);
     try {
       const finalCredential = {
         identifier: credentials.username,
@@ -45,13 +48,16 @@ export const AuthProvider = ({ children }) => {
         setUser(userData);
         router.push("/blogs");
       } else {
-        setError("Error in network request: " + userData.data);
+        setLoginError("Error in network request: " + userData.data);
+        setTimeout(()=>setLoginError(''),3000)
       }
     } catch (e) {
       setUser(null);
-      setError("Error in logging from Api route", e);
+      setLoginError("Error in logging from Api route", e);
+      setTimeout(()=>setLoginError(''),3000)
       console.error("Error in logging from Api route", e);
     }
+    setIsLoginLoading(false)
   ***REMOVED***
 
   //logout
@@ -72,7 +78,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, error, login ,logout }}>
+    <AuthContext.Provider value={{ user, error, login ,loginError,isLoginLoading,logout }}>
       {children}
     </AuthContext.Provider>
   );
