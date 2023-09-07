@@ -18,7 +18,7 @@ const FireBaseTesting = () => {
       username: "fazil",
       password: "124",
     });
-  ***REMOVED***
+  };
   //fetch data
   useEffect(() => {
     const q = query(collection(db, "users"));
@@ -51,6 +51,6 @@ const FireBaseTesting = () => {
       })}
     </div>
   );
-***REMOVED***
+};
 
 export default FireBaseTesting;

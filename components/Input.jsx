@@ -10,6 +10,6 @@ const Input = ({ type, placeholder, onChange,className,name }) => {
       className={`${styles["input"]} ${styles[className]}`}
     />
   );
-***REMOVED***
+};
 
 export default Input;

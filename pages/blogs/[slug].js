@@ -28,7 +28,7 @@ const BlogPage = ({blog}) => {
       </p>
     </div>
     }</div>;
-***REMOVED***
+};
 
 export async function getServerSideProps({params}){
   const blog = await getBlogById(params.slug);
@@ -61,7 +61,7 @@ export async function getServerSideProps({params}){
 //     if(blogs){
 //       paths = blogs.map((blog) => {
 //         const slug = String(blog.id)
-//         return { params: { slug } ***REMOVED***
+//         return { params: { slug } };
 //       });
 //       console.log("Paths -> blog",paths);
 //     }

@@ -10,6 +10,6 @@ const Button = ({ type, onClick,children }) => {
       {children}
     </button>
   );
-***REMOVED***
+};
 
 export default Button;

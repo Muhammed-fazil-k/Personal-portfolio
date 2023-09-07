@@ -18,7 +18,7 @@ const SmoothScrollLink = ({ to, children }) => {
       {children}
     </ScrollLink>
   );
-***REMOVED***
+};
 
 const NavBar = ({ page }) => {
   var isHomePage = page === "home";
@@ -64,6 +64,6 @@ const NavBar = ({ page }) => {
       </ul>
     </nav>
   );
-***REMOVED***
+};
 
 export default NavBar;

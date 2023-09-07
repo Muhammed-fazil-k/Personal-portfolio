@@ -29,7 +29,7 @@ const BlogsPage = ({ blogs }) => {
       </div>
     </Layout>
   );
-***REMOVED***
+};
 
 export async function getServerSideProps() {
   const { blogs } = await getLocalData("blogs.json");
@@ -37,7 +37,7 @@ export async function getServerSideProps() {
     props: {
       blogs,
     },
-  ***REMOVED***
+  };
 }
 
 // export async function getStaticProps() {
@@ -47,7 +47,7 @@ export async function getServerSideProps() {
 //     props: {
 //       blogs,
 //     },
-//   ***REMOVED***
+//   };
 // }
 
 //content toggle feature logic
@@ -77,6 +77,6 @@ const Blog = ({ blog }) => {
       </Link>
     </div>
   );
-***REMOVED***
+};
 
 export default BlogsPage;

@@ -21,7 +21,7 @@ const CreatePage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    ***REMOVED***
+    };
     try {
       const res = await fetch("http://localhost:3000/api/add-blog", reqParams);
       if (!res.ok) {
@@ -74,6 +74,6 @@ const CreatePage = () => {
       </form>
     </div>
   );
-***REMOVED***
+};
 
 export default WithAuth(CreatePage);

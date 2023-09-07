@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
         setError("Unable to validate user");
       }
-    ***REMOVED***
+    };
     validateUser();
   }, []);
 
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       const finalCredential = {
         identifier: credentials.username,
         password: credentials.password,
-      ***REMOVED***
+      };
       const userData = await axios.post(
         "http://localhost:3000/api/auth/login-auth",
         finalCredential
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
       console.error("Error in logging from Api route", e);
     }
     setIsLoginLoading(false)
-  ***REMOVED***
+  };
 
   //logout
   const logout = async () =>{
@@ -82,4 +82,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-***REMOVED***
+};

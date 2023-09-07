@@ -11,7 +11,7 @@ const LoginPage = () => {
   console.log(loginError);
   async function handleLogin(e) {
     e.preventDefault();
-    const credentials = { username, password ***REMOVED***
+    const credentials = { username, password };
     login(credentials);
   }
   return (
@@ -40,6 +40,6 @@ const LoginPage = () => {
       {loginError && <p style={{color:'red'}}>Login error : {loginError}</p>}
     </div>
   );
-***REMOVED***
+};
 
 export default LoginPage;

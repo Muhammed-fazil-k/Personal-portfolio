@@ -21,6 +21,6 @@ const Introduction = () => {
       </div>
     </div>
   );
-***REMOVED***
+};
 
 export default Introduction;

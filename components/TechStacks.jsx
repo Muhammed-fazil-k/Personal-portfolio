@@ -22,7 +22,7 @@ const TechStack = ({techstack}) => {
       </div>
     </div>
   );
-***REMOVED***
+};
 
 const TechStacks = () => {
   const { techstacks } = useContext(UserProfileContext);
@@ -37,6 +37,6 @@ const TechStacks = () => {
       </div>
     </div>
   );
-***REMOVED***
+};
 
 export default TechStacks;
