@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { db } from "@/firebase/FirebaseConfig";
 import {
   collection,
@@ -8,9 +8,14 @@ import {
   getDoc,
   onSnapshot,
 } from "firebase/firestore";
+import {GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword} from 'firebase/auth'
+import Button from "@/components/Button";
+import FirebaseAuthContext from "@/context/FireaseAuthContext";
 
 const FireBaseTesting = () => {
   const [userItems, setUserItems] = useState([]);
+
+  const {firebaseSignIn,firebaseSignOut} = useContext(FirebaseAuthContext);
   //add item to database
   const addItem = async () => {
     console.log("ADding");
@@ -31,10 +36,40 @@ const FireBaseTesting = () => {
       setUserItems(itemArr);
     });
   }, []);
-
+  
   userItems.map((user) => {
     console.log(user.username);
   });
+  const signInWithGoogle = ()=>{
+    console.log('logged in');
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth,provider).then(
+      (result)=>{
+        console.log('result : ',result);
+      }
+    ).catch(
+      (err)=>{
+        console.log('error: ',err);
+      }
+    )
+  }
+
+  const signInWithPassword = ()=>{
+    firebaseSignIn({email:'muhammedfazil104@gmail.com',password:'blog123'})
+    // const auth = getAuth();
+    // signInWithEmailAndPassword(auth,"muhammedfazil104@gmail.com","blog123")
+    // .then((userCredential)=>{
+    //   console.log('User data :',userCredential);
+    // })
+    // .catch((error)=>{
+    //   console.log('Error in login: ',error);
+    // })
+
+  }
+  const signOut = ()=>{
+    firebaseSignOut();
+  }
   return (
     <div>
       <h1>Testing firebase</h1>
@@ -49,6 +84,9 @@ const FireBaseTesting = () => {
           </div>
         );
       })}
+      <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+      <Button onClick={signInWithPassword}>Sign in with Email</Button>
+      <Button onClick={signOut}>Sign in with Email</Button>
     </div>
   );
 };

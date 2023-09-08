@@ -1,18 +1,21 @@
 import AuthContext from "@/context/AuthContext";
-import React, { useContext, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import style from "../../styles/Login.module.css";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import FirebaseAuthContext from "@/context/FireaseAuthContext";
+import { useRouter } from "next/router";
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login,loginError,isLoginLoading } = useContext(AuthContext);
-  console.log(loginError);
+  const {firebaseSignIn,firebaseError,firebaseLoading} = useContext(FirebaseAuthContext)
   async function handleLogin(e) {
     e.preventDefault();
-    const credentials = { username, password };
-    login(credentials);
+    const credentials = { email:username, password };
+    //login(credentials);
+    firebaseSignIn(credentials)
   }
   return (
     <div className={style["login-container"]}>
@@ -34,10 +37,10 @@ const LoginPage = () => {
           />
         </div>
         <div className={style["login-button"]}>
-          <Button type="submit">{isLoginLoading ? <LoadingSpinner/> :'Login'}</Button>
+          <Button type="submit">{firebaseLoading ? <LoadingSpinner/> :'Login'}</Button>
         </div>
       </form>
-      {loginError && <p style={{color:'red'}}>Login error : {loginError}</p>}
+      {firebaseError && <p style={{color:'red'}}>Login error : {firebaseError}</p>}
     </div>
   );
 };

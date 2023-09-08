@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import styles from "../styles/NavBar.module.css";
 import { Link as ScrollLink } from "react-scroll";
 import AuthContext from "@/context/AuthContext";
+import FirebaseAuthContext from "@/context/FireaseAuthContext";
 //INtroduction
 //skills
 //Contacts
@@ -23,7 +24,8 @@ const SmoothScrollLink = ({ to, children }) => {
 const NavBar = ({ page }) => {
   var isHomePage = page === "home";
   const { user,logout } = useContext(AuthContext);
-  console.log("NavBar user: ", user);
+  const {firebaseUser,firebaseSignOut} = useContext(FirebaseAuthContext);
+  console.log("NavBar user: ", firebaseUser);
   return (
     <nav className={styles["navbar-container"]}>
       <ul>
@@ -48,7 +50,7 @@ const NavBar = ({ page }) => {
         <li>
           <SmoothScrollLink to="connect">Connect</SmoothScrollLink>
         </li>
-        {!user ? (
+        {!firebaseUser ? (
           <li>
             <Link href="/auth/login" className={styles["nav-link"]}>
               Login
@@ -56,7 +58,7 @@ const NavBar = ({ page }) => {
           </li>
         ) : (
           <li>
-            <a onClick={logout} className={styles["nav-link"]}>
+            <a onClick={firebaseSignOut} className={styles["nav-link"]}>
               Logout
             </a>
           </li>

@@ -1,4 +1,5 @@
 import AuthContext from '@/context/AuthContext';
+import FirebaseAuthContext from '@/context/FireaseAuthContext';
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
@@ -7,15 +8,16 @@ const WithAuth = (Component) => {
   return function ProtectedRoute({...props}){
     const router = useRouter() ;
     const {user} = useContext(AuthContext);
-    console.log('User data HOC',user);
+    const {firebaseUser} = useContext(FirebaseAuthContext);
+    console.log('User data HOC',firebaseUser);
 
     useEffect(()=>{
-        if(!user){
+        if(!firebaseUser){
             router.push('/auth/login')
         }
     },[])
 
-    return user && <Component {...props}/>
+    return firebaseUser && <Component {...props}/>
   }
 }
 

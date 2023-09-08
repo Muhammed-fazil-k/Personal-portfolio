@@ -5,16 +5,17 @@ import { useContext, useState } from "react";
 import Link from "next/link";
 import AuthContext from "@/context/AuthContext";
 import Button from "@/components/Button";
+import FirebaseAuthContext from "@/context/FireaseAuthContext";
 
 const BlogsPage = ({ blogs }) => {
   const { user, error } = useContext(AuthContext);
-  console.log("User data from BlogsPage: ", user);
-  console.log("Error data from BlogsPage: ", error);
+  const {firebaseUser,} = useContext(FirebaseAuthContext)
+  console.log("User data from BlogsPage: ", firebaseUser);
   return (
     <Layout page="blogs">
       <div className={styles["blogs-container"]}>
         <h1>Blogs</h1>
-        {user && (
+        {firebaseUser && (
           <Button>
             <Link href="/blogs/create">New Post</Link>
           </Button>
