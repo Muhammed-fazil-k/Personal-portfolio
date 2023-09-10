@@ -3,11 +3,13 @@
   top: 0;
   width: 100vw;
   z-index: 100;
-  background-color: #333333;
-  color: #ffffff;
+  background-color: #FFFFFF;
+  color: #333333;
   display: flex;
   justify-content: center;
   height: 60px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 9px;
+
 }
 
 .navbar-container ul{
@@ -29,8 +31,8 @@
 }
 
 .nav-link {
-  color: white;
   cursor: pointer;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
+  font-weight: bold;
 }

@@ -2,10 +2,11 @@
 }
 
 .section{
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid black;
-    background-color: #222222;
-    color: #ffffffaf;
+    background-color: #FFFFFF;
+    color: #333333;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 9px;
 }

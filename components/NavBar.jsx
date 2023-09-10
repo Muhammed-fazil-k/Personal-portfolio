@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../styles/NavBar.module.css";
 import { Link as ScrollLink } from "react-scroll";
 import AuthContext from "@/context/AuthContext";
@@ -7,28 +7,38 @@ import FirebaseAuthContext from "@/context/FireaseAuthContext";
 //INtroduction
 //skills
 //Contacts
-const SmoothScrollLink = ({ to, children }) => {
-  return (
-    <ScrollLink
-      to={to}
-      smooth={true}
-      duration={500}
-      className={styles["nav-link"]}
-      activeClass={styles["active-link"]}
-    >
-      {children}
-    </ScrollLink>
-  );
-};
+// const SmoothScrollLink = ({ to, children }) => {
+//   return (
+//     <ScrollLink
+//       to={to}
+//       smooth={true}
+//       duration={500}
+//       className={styles["nav-link"]}
+//       activeClass={styles["active-link"]}
+//     >
+//       {children}
+//     </ScrollLink>
+//   );
+// };
 
 const NavBar = ({ page }) => {
   var isHomePage = page === "home";
-  const { user,logout } = useContext(AuthContext);
-  const {firebaseUser,firebaseSignOut} = useContext(FirebaseAuthContext);
+  const { user, logout } = useContext(AuthContext);
+  const { firebaseUser, firebaseSignOut } = useContext(FirebaseAuthContext);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
   console.log("NavBar user: ", firebaseUser);
   return (
     <nav className={styles["navbar-container"]}>
       <ul>
+        <div className={styles["menu"]} onClick={() => setMenuOpen(!menuOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <li>
           <Link href="/" className={styles["nav-link"]}>
             Home
