@@ -6,42 +6,6 @@
       "title": "This is my first blog",
       "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
       "date": "24/07/2023"
-    },
-    {
-      "id": 2,
-      "title": "This is my second blog",
-      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "date": "24/07/2023"
-    },
-    {
-      "id": 3,
-      "title": "This is my third blog",
-      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "date": "24/07/2023"
-    },
-    {
-      "id": 1692034266898,
-      "title": "New Era starts",
-      "content": "Contentnt",
-      "date": "14/8/2023"
-    },
-    {
-      "id": 1693506549494,
-      "title": "This is new Blog",
-      "content": "This is a new content",
-      "date": "31/8/2023"
-    },
-    {
-      "id": 1693509068152,
-      "title": "Small Blog",
-      "content": "This is a small blog",
-      "date": "1/9/2023"
-    },
-    {
-      "id": 1694199318681,
-      "title": "New content after adding firebsae",
-      "content": "Added fire base successfully",
-      "date": "9/9/2023"
     }
   ]
 }

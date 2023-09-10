@@ -34,11 +34,6 @@ const NavBar = ({ page }) => {
             Home
           </Link>
         </li>
-        {isHomePage && (
-          <li>
-            <SmoothScrollLink to="techstacks">Techstacks</SmoothScrollLink>
-          </li>
-        )}
         {/* <li>
             <SmoothScrollLink to="works">Works</SmoothScrollLink>
           </li> */}
@@ -46,9 +41,6 @@ const NavBar = ({ page }) => {
           <Link href="/blogs" className={styles["nav-link"]}>
             Blogs
           </Link>
-        </li>
-        <li>
-          <SmoothScrollLink to="connect">Connect</SmoothScrollLink>
         </li>
         {!firebaseUser ? (
           <li>
