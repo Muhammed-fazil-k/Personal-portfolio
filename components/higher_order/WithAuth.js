@@ -12,6 +12,7 @@ const WithAuth = (Component) => {
     console.log('User data HOC',firebaseUser);
 
     useEffect(()=>{
+      console.log('HOC user ',firebaseUser);
         if(!firebaseUser){
             router.push('/auth/login')
         }

@@ -19,6 +19,7 @@ const LoginPage = () => {
   }
   return (
     <div className={style["login-container"]}>
+      <h2>Login</h2>
       <form className={style["login-form"]} onSubmit={handleLogin}>
         <div className={style["login-input"]}>
           <label>Username</label>
@@ -40,7 +41,7 @@ const LoginPage = () => {
           <Button type="submit">{firebaseLoading ? <LoadingSpinner/> :'Login'}</Button>
         </div>
       </form>
-      {firebaseError && <p style={{color:'red'}}>Login error : {firebaseError}</p>}
+      {firebaseError && <p style={{color:'red',fontSize:'0.9rem'}}>Login error : {firebaseError}</p>}
     </div>
   );
 };

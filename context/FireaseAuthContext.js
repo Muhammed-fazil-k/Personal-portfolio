@@ -41,7 +41,7 @@ export const FirebaseAuthProvider = ({ children }) => {
       .catch((error) => {
         console.log("Logged in error :", error.message);
         setFirebaseError(error.message);
-        setTimeout(() => setFirebaseError(""), 2000);
+        setTimeout(() => setFirebaseError(""), 3000);
       })
       .finally(() => {
         setFirebaseLoading(false);

@@ -6,18 +6,22 @@ import Link from "next/link";
 import AuthContext from "@/context/AuthContext";
 import Button from "@/components/Button";
 import FirebaseAuthContext from "@/context/FireaseAuthContext";
+import { useRouter } from "next/router";
 
 const BlogsPage = ({ blogs }) => {
   const { user, error } = useContext(AuthContext);
   const {firebaseUser,} = useContext(FirebaseAuthContext)
+  const router = useRouter()
   console.log("User data from BlogsPage: ", firebaseUser);
+  const directToCreate = ()=>{
+    router.push("/blogs/create");
+  }
   return (
     <Layout page="blogs">
       <div className={styles["blogs-container"]}>
         <h1>Blogs</h1>
         {firebaseUser && (
-          <Button>
-            <Link href="/blogs/create">New Post</Link>
+          <Button onClick={directToCreate}>New Post
           </Button>
         )}
         {blogs.map((blog) => {

@@ -67,7 +67,7 @@ const CreatePage = () => {
             onChange={handleInputChange}
             name="content"
             className={inputStyles["input"]}
-            style={{width:'25rem',height:'20rem'}}
+            
           />
         </div>
         <div className={styles["create-button"]}>

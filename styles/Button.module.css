@@ -1,7 +1,7 @@
 .button{
   width: 7rem;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.1); /* Translucent white background */
+  background: black; /* Translucent white background */
   border: none;
   border-radius: 8px;
   color: white;
