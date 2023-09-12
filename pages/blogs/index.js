@@ -12,7 +12,7 @@ const BlogsPage = ({ blogs }) => {
   const { user, error } = useContext(AuthContext);
   const {firebaseUser,} = useContext(FirebaseAuthContext)
   const router = useRouter()
-  console.log("User data from BlogsPage: ", firebaseUser);
+  console.log("Blogs: ", blogs);
   const directToCreate = ()=>{
     router.push("/blogs/create");
   }
@@ -38,6 +38,7 @@ const BlogsPage = ({ blogs }) => {
 
 export async function getServerSideProps() {
   const { blogs } = await getLocalData("blogs.json");
+  blogs.sort((a,b) => new Date(b.date) - new Date(a.date))
   return {
     props: {
       blogs,
@@ -63,7 +64,7 @@ export async function getServerSideProps() {
 
 const Blog = ({ blog }) => {
   const [showFullContent, setShowFullContent] = useState(false);
-  const maxContentLength = 100;
+  const maxContentLength = 150;
   const contentToDisplay = showFullContent
     ? blog.content
     : blog.content.substr(0, maxContentLength);
@@ -74,10 +75,7 @@ const Blog = ({ blog }) => {
         <h2>{blog.title}</h2>
         <span>{blog.date}</span>
         <p>
-          {contentToDisplay}
-          {!shortContent && (
-            <Link href={`/blogs/${blog.id}`}>...read more</Link>
-          )}
+          {contentToDisplay}.......
         </p>
       </Link>
     </div>

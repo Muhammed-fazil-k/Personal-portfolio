@@ -48,6 +48,10 @@
 .blog-container a:hover{
   text-decoration: none;
 }
+
+.blog-container span{
+  color: #444;
+}
 .blog-page{
   width: 100vw;
   padding: 2rem;
@@ -67,6 +71,6 @@
 
 @media screen and (max-width: 768px) {
   .blog-container {
-    width: 70%;
+    width: 95%;
   }
 }
