@@ -14,7 +14,7 @@ export default function Home({ data }) {
             <div className={styles["section"]} id="#">
               <Introduction />
             </div>
-            <div className={styles["section"]} id="techstacks">
+            <div style={{backgroundColor:'rgb(235, 241, 246)'}} className={styles["section"]} id="techstacks">
               <TechStacks />
             </div>
           </div>

@@ -7,19 +7,22 @@
             "id":1,
             "name":"React",
             "description":"I have started my web development journey with react and it was a good journey till this point",
-            "knoweldge":"8/10"
+            "knoweldge":"8/10",
+            "imageUrl":"/images/react-logo.png"
         },
         {
             "id":2,
             "name":"Next",
             "description":"Once i learned react , i felt something was missing there . Too much client side . At that point i took Next step",
-            "knoweldge":"8/10"
+            "knoweldge":"8/10",
+            "imageUrl":"/images/nextjs-logo.png"
         },
         {
             "id":3,
             "name":"Java",
             "description":"Felt like a master of programming . So i tried to master it",
-            "knoweldge":"4/10"
+            "knoweldge":"4/10",
+            "imageUrl":"/images/java-logo.png"
         }
     ]
 

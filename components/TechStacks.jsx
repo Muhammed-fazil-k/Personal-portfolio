@@ -8,7 +8,7 @@ const TechStack = ({techstack}) => {
     <div className={styles["techstack-container"]}>
       <div className={styles["techstack-image"]}>
         <Image
-          src={"https://dummyimage.com/150x150"}
+          src={techstack.imageUrl}
           alt="Technology"
           width={150}
           height={150}
