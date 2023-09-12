@@ -17,7 +17,7 @@ const Introduction = () => {
         </div>
       </div>
       <div className={styles["detail-container"]}>
-        <p>Hello, I'm <span style={{color:'#FF4136',fontWeight:'bold',fontSize:'1.2rem'}}> Muhammed Fazil K </span> <span>,{introduction}</span> </p>
+        <p>Hello, I&apos;m <span style={{color:'#FF4136',fontWeight:'bold',fontSize:'1.2rem'}}> Muhammed Fazil K </span> <span>,{introduction}</span> </p>
         
       </div>
     </div>
