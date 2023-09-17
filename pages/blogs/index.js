@@ -24,6 +24,7 @@ const BlogsPage = ({ blogs }) => {
           <Button onClick={directToCreate}>New Post
           </Button>
         )}
+        {blogs.length ===0 && <p> You haven&apos;t added blogs yet</p> }
         {blogs.map((blog) => {
           return (
             <Blog key={blog.id} blog={blog}>
@@ -75,7 +76,7 @@ const Blog = ({ blog }) => {
         <h2>{blog.title}</h2>
         <span>{blog.date}</span>
         <p>
-          {contentToDisplay}.......
+          {contentToDisplay} {!shortContent && '....' }
         </p>
       </Link>
     </div>

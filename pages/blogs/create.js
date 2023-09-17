@@ -5,7 +5,7 @@ import styles from "../../styles/CreateBlog.module.css";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import inputStyles from '../../styles/Input.module.css'
-import {APP_URL} from '../../config/index'
+import APP_URL from "@/config";
 
 const CreatePage = () => {
   const router = useRouter();
@@ -24,15 +24,18 @@ const CreatePage = () => {
       },
       body: JSON.stringify(formData),
     };
+    const URL = `${APP_URL}/api/add-blog`;
     try {
-      const res = await fetch(`${APP_URL}/api/add-blog`, reqParams);
+      const res = await fetch(URL, reqParams);
       if (!res.ok) {
         throw new Error("Failed to add blog");
       }
       const addedBlog = await res.json();
       console.log("Added Blog", res.body);
     } catch (err) {
+
       console.error("Error adding new Blog -url - :", err);
+      console.error("Error adding new Blog url link - :", URL);
     }
     setFormData({
       title: "",
