@@ -5,7 +5,7 @@ import {
   addDoc,
   query,
   QuerySnapshot,
-  getDoc,
+  getDocs,
   onSnapshot,
 } from "firebase/firestore";
 import {GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword} from 'firebase/auth'
@@ -30,11 +30,23 @@ const FireBaseTesting = () => {
     const unsubscibe = onSnapshot(q, (sn) => {
       let itemArr = [];
       sn.forEach((item) => {
-        console.log("User Item : ", item.id);
+        console.log("User Item : ", item);
+        console.log("User Item : ", item);
         itemArr.push({...item.data(),id:item.id});
       });
       setUserItems(itemArr);
     });
+
+    const getBlogs = async ()=>{
+
+      
+      const blogCollection = collection(db,'blogs')
+      const data = await getDocs(blogCollection);
+      data.docs.map(doc => {
+        console.log('blog doc: ',doc.data());
+      })
+    }
+    getBlogs()
   }, []);
   
   userItems.map((user) => {

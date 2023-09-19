@@ -1,8 +1,8 @@
-
-import { getBlogById } from "@/lib/blogs-crud";
 import React, { useState } from "react";
 import styles from '../../styles/Blogs.module.css';
 import Link from "next/link";
+import { db } from "@/firebase/FirebaseConfig";
+import { collection, doc,getDoc, getDocs, query, where } from "firebase/firestore";
 const BlogPage = ({blog}) => {
   const [showFullContent, setShowFullContent] = useState(false);
   const maxContentLength = 400;
@@ -17,7 +17,7 @@ const BlogPage = ({blog}) => {
     {blog && <div className={styles["blog-post"]}>
       <Link href='/blogs'> ← Go back</Link>
       <h2>{blog.title}</h2>
-      <span>{blog.date}</span>
+      <span>{blog.createdAt}</span>
       <p>
         {contentToDisplay}
         {blog.content.length > maxContentLength && (
@@ -31,7 +31,20 @@ const BlogPage = ({blog}) => {
 };
 
 export async function getServerSideProps({params}){
-  const blog = await getBlogById(params.slug);
+  console.log('Get blog');
+  const docRef= doc(db,'blogs',params.slug)
+  const docSnapshot = await getDoc(docRef);
+  
+  let blog ={}
+  if(docSnapshot.exists()){
+    const blogData = docSnapshot.data();
+    const createdAt = blogData.createdAt.toDate().toISOString()
+    blog = {...blogData,createdAt:createdAt,id:docSnapshot.id}
+  }
+  // querySnapshot.forEach(doc => {
+  //   console.log(doc.id, " => ", doc.data());
+  // })
+  //const blog = await getBlogById(params.slug);
   return {
     props: {
             blog,

@@ -35,7 +35,6 @@ const CreatePage = () => {
     } catch (err) {
 
       console.error("Error adding new Blog -url - :", err);
-      console.error("Error adding new Blog url link - :", URL);
     }
     setFormData({
       title: "",
@@ -43,6 +42,8 @@ const CreatePage = () => {
     });
     router.push("/blogs");
   }
+
+  
   function handleInputChange(e) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

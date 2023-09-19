@@ -1,4 +1,3 @@
-import { getLocalData } from "@/lib/local-data";
 import styles from "../../styles/Blogs.module.css";
 import Layout from "@/components/Layout";
 import { useContext, useState } from "react";
@@ -7,9 +6,11 @@ import AuthContext from "@/context/AuthContext";
 import Button from "@/components/Button";
 import FirebaseAuthContext from "@/context/FireaseAuthContext";
 import { useRouter } from "next/router";
+import { collection, getDocs } from "firebase/firestore"; 
+import { db } from "@/firebase/FirebaseConfig";
 
 const BlogsPage = ({ blogs }) => {
-  const { user, error } = useContext(AuthContext);
+  //const { user, error } = useContext(AuthContext);
   const {firebaseUser,} = useContext(FirebaseAuthContext)
   const router = useRouter()
   console.log("Blogs: ", blogs);
@@ -27,9 +28,7 @@ const BlogsPage = ({ blogs }) => {
         {blogs.length ===0 && <p> You haven&apos;t added blogs yet</p> }
         {blogs.map((blog) => {
           return (
-            <Blog key={blog.id} blog={blog}>
-              {blog.title}
-            </Blog>
+            <Blog key={blog.id} blog={blog}/>
           );
         })}
       </div>
@@ -38,8 +37,20 @@ const BlogsPage = ({ blogs }) => {
 };
 
 export async function getServerSideProps() {
-  const { blogs } = await getLocalData("blogs.json");
-  blogs.sort((a,b) => new Date(b.date) - new Date(a.date))
+
+
+  console.log('get All blogs');
+  //const { blogs } = await getLocalData("blogs.json");
+  const blogs =[]
+  const blogsCollection = collection(db,'blogs');
+  const querySnapshot = await getDocs(blogsCollection);
+  querySnapshot.forEach(doc =>{
+    const blogData = doc.data();
+    const createdAt = blogData.createdAt.toDate().toISOString()
+    const blog = {...blogData,createdAt:createdAt,id:doc.id}
+    blogs.push(blog)
+  })
+  //blogs.sort((a,b) => new Date(b.date) - new Date(a.date))
   return {
     props: {
       blogs,
@@ -74,7 +85,7 @@ const Blog = ({ blog }) => {
     <div className={styles["blog-container"]}>
       <Link href={`/blogs/${blog.id}`}>
         <h2>{blog.title}</h2>
-        <span>{blog.date}</span>
+        <span>{blog.createdAt}</span>
         <p>
           {contentToDisplay} {!shortContent && '....' }
         </p>
