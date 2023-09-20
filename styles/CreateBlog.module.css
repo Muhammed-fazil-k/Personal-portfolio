@@ -46,7 +46,7 @@
 .create-button{
     padding-right: 1rem;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 @media screen and (max-width: 768px) {
     .create-container{

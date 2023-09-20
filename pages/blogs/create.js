@@ -24,7 +24,7 @@ const CreatePage = () => {
       },
       body: JSON.stringify(formData),
     };
-    const URL = `${APP_URL}/api/add-blog`;
+    const URL = `${APP_URL}/api/blog/add`;
     try {
       const res = await fetch(URL, reqParams);
       if (!res.ok) {

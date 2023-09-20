@@ -2,15 +2,33 @@ import styles from "../../styles/Blogs.module.css";
 import Layout from "@/components/Layout";
 import { useContext, useState } from "react";
 import Link from "next/link";
-import AuthContext from "@/context/AuthContext";
 import Button from "@/components/Button";
 import FirebaseAuthContext from "@/context/FireaseAuthContext";
 import { useRouter } from "next/router";
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, doc, getDocs } from "firebase/firestore"; 
 import { db } from "@/firebase/FirebaseConfig";
+import { convertToLocalDate } from "@/utils/date-utils";
+import APP_URL from "@/config";
+import axios from "axios";
+
+export async function getServerSideProps() {
+  const blogs =[]
+  const blogsCollection = collection(db,'blogs');
+  const querySnapshot = await getDocs(blogsCollection);
+  querySnapshot.forEach(doc =>{
+    const blogData = doc.data();
+    const createdAt = blogData.createdAt.toDate().toISOString()
+    const blog = {...blogData,createdAt:createdAt,id:doc.id}
+    blogs.push(blog)
+  })
+  return {
+    props: {
+      blogs,
+    },
+  };
+}
 
 const BlogsPage = ({ blogs }) => {
-  //const { user, error } = useContext(AuthContext);
   const {firebaseUser,} = useContext(FirebaseAuthContext)
   const router = useRouter()
   console.log("Blogs: ", blogs);
@@ -36,37 +54,7 @@ const BlogsPage = ({ blogs }) => {
   );
 };
 
-export async function getServerSideProps() {
 
-
-  console.log('get All blogs');
-  //const { blogs } = await getLocalData("blogs.json");
-  const blogs =[]
-  const blogsCollection = collection(db,'blogs');
-  const querySnapshot = await getDocs(blogsCollection);
-  querySnapshot.forEach(doc =>{
-    const blogData = doc.data();
-    const createdAt = blogData.createdAt.toDate().toISOString()
-    const blog = {...blogData,createdAt:createdAt,id:doc.id}
-    blogs.push(blog)
-  })
-  //blogs.sort((a,b) => new Date(b.date) - new Date(a.date))
-  return {
-    props: {
-      blogs,
-    },
-  };
-}
-
-// export async function getStaticProps() {
-//   console.log("Blogs page : getStaticProps called");
-//   const { blogs } = await getLocalData("blogs.json");
-//   return {
-//     props: {
-//       blogs,
-//     },
-//   };
-// }
 
 //content toggle feature logic
 // if our content is greater than a particular value
@@ -75,21 +63,33 @@ export async function getServerSideProps() {
 // get the content to display based on the above state variable
 
 const Blog = ({ blog }) => {
+  const { firebaseUser } = useContext(FirebaseAuthContext);
   const [showFullContent, setShowFullContent] = useState(false);
   const maxContentLength = 150;
   const contentToDisplay = showFullContent
     ? blog.content
     : blog.content.substr(0, maxContentLength);
   const shortContent = blog.content.length < maxContentLength;
+
+  const formatedDate =convertToLocalDate(blog.createdAt); 
+  const router = useRouter()
+  const handleDelete = async ()=>{
+    const url = `${APP_URL}/api/blog/delete`;
+    const res = await axios.delete(url,{data:{id:blog.id}});
+    console.log('delete response :',res);
+    router.push('/blogs')
+  }
   return (
     <div className={styles["blog-container"]}>
       <Link href={`/blogs/${blog.id}`}>
         <h2>{blog.title}</h2>
-        <span>{blog.createdAt}</span>
+      </Link>
+        <span>{formatedDate}</span>
         <p>
           {contentToDisplay} {!shortContent && '....' }
         </p>
-      </Link>
+        {firebaseUser && <Button onClick={handleDelete}>Delete</Button>}
+        
     </div>
   );
 };

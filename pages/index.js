@@ -24,9 +24,6 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  //const res = await fetch('http://localhost:3000/api/staticdata');
-  // const content =await res.json();
-  // console.log(typeof content);
   const data = await getLocalData("personal.json");
   return {
     props: {

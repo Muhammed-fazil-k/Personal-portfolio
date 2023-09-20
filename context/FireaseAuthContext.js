@@ -14,7 +14,7 @@ export default FirebaseAuthContext;
 export const FirebaseAuthProvider = ({ children }) => {
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [firebaseError, setFirebaseError] = useState("");
-  const [firebaseLoading, setFirebaseLoading] = useState(false);
+  const [firebaseLoading, setFirebaseLoading] = useState(true);
   const auth = getAuth(app);
   const router = useRouter();
 
@@ -25,6 +25,7 @@ export const FirebaseAuthProvider = ({ children }) => {
       } else {
         setFirebaseUser(null);
       }
+      setFirebaseLoading(false)
     });
     return () => listen();
   }, []);
